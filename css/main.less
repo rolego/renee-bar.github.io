@@ -1,5 +1,6 @@
 @import (less) "lesshat.less";
 
+@fontColor: black;
 @fontColorSubtle: #4D4D4D;
 
 *, *:before, *:after {
@@ -9,6 +10,14 @@
 html {
   -webkit-font-smoothing: antialiased;
   font-family: Helvetica, Arial, sans-serif;
+  color: @fontColor;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: @fontColor;
 }
 
 #header {
@@ -28,6 +37,10 @@ html {
     color: @fontColorSubtle;
     line-height: 1.8em;
     font-weight: bold;
+
+    a, a:visited {
+      color: @fontColorSubtle;
+    }
 
     address {
       font-style: normal;
