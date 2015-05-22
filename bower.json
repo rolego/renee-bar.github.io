@@ -1,0 +1,21 @@
+{
+  "name": "renee-bar.github.io",
+  "version": "0.0.1",
+  "homepage": "https://github.com/renee-bar/renee-bar.github.io",
+  "authors": [
+    "Reto Kaiser <reto@retokaiser.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fetch": "~0.8.2",
+    "mustache": "~2.0.0"
+  }
+}
