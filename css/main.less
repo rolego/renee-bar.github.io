@@ -1,7 +1,14 @@
 @import (less) "lesshat.less";
 
+@fontColorSubtle: #4D4D4D;
+
 *, *:before, *:after {
   .box-sizing(border-box);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 #header {
@@ -15,10 +22,21 @@
     font-size: 15vmin;
   }
 
-  address {
+  .info {
     margin-top: 10vh;
-    .email {
-      padding-top: 0.3em;
+    font-size: 0.8em;
+    color: @fontColorSubtle;
+    line-height: 1.8em;
+    font-weight: bold;
+
+    address {
+      font-style: normal;
+
+      .icon-pop-out {
+        height: 1em;
+        padding-left: 2px;
+        margin-right: -4px;
+      }
     }
   }
 
