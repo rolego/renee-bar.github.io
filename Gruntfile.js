@@ -2,22 +2,25 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    bower_concat: {
+      all: {
+        dest: 'grunt_dist/bower.js'
+      }
+    },
     concat: {
       options: {
         separator: ';'
       },
       dist: {
-        src: ['js/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        src: ['grunt_dist/bower.js', 'js/**/*.js'],
+        dest: 'grunt_dist/<%= pkg.name %>.js'
       }
     },
     uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-      },
       dist: {
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'grunt_dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
     }
@@ -25,7 +28,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-bower-concat');
 
-  grunt.registerTask('default', ['concat', 'uglify']);
+  grunt.registerTask('default', ['bower_concat', 'concat', 'uglify']);
 
 };
