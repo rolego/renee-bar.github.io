@@ -7,6 +7,12 @@ Development
 Install dependencies:
 ```
 bundle install
+npm install
+```
+
+Build JS:
+```
+grunt
 ```
 
 Build the site and serve it on `http://localhost:4000`
