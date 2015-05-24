@@ -1,5 +1,6 @@
 [www.renee-bar.ch](http://www.renee-bar.ch)
 ================
+Website for the *Renée Bar* in Basel.
 
 Development
 -----------
@@ -10,8 +11,8 @@ npm install
 bower install
 ```
 
-Build website and serve at http://localhost:4000:
+Build website and serve at [localhost:4000](http://localhost:4000):
 ```
 grunt develop
 ```
-Will also watch for changes, rebuild and trigger a *live reload*.
+…this will also watch for changes, rebuild and trigger a *live reload*.
