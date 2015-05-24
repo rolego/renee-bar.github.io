@@ -11,7 +11,8 @@ module.exports = function(grunt) {
     uglify: {
       all: {
         options: {
-          sourceMap: true
+          sourceMap: true,
+          sourceMapIncludeSources: true
         },
         files: {
           'dist/<%= pkg.name %>.js': ['<%= bower_concat.all.dest %>', 'js/**/*.js']
