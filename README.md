@@ -7,6 +7,7 @@ Install dependencies:
 ```
 bundle install
 npm install
+bower install
 ```
 
 Build the website:
