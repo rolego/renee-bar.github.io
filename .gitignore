@@ -1,4 +1,4 @@
 /.tmp
+/.jekyll
 /node_modules
-/dist
-/_site
+/bower_components
