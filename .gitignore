@@ -1,3 +1,4 @@
+/.tmp
 /node_modules
-/grunt_dist
+/dist
 /_site

@@ -12,6 +12,7 @@ npm install
 
 Build JS:
 ```
+bower install
 grunt
 ```
 

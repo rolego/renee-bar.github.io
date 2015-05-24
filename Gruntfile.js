@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     bower_concat: {
       all: {
-        dest: 'grunt_dist/bower.js'
+        dest: '.tmp/bower.js'
       }
     },
     concat: {
@@ -13,14 +13,17 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['grunt_dist/bower.js', 'js/**/*.js'],
-        dest: 'grunt_dist/<%= pkg.name %>.js'
+        src: ['<%= bower_concat.all.dest %>', 'js/**/*.js'],
+        dest: 'dist/<%= pkg.name %>.js'
       }
     },
     uglify: {
       dist: {
+        options: {
+          sourceMap: true
+        },
         files: {
-          'grunt_dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
     }
