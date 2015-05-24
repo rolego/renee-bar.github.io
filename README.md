@@ -10,12 +10,8 @@ npm install
 bower install
 ```
 
-Build the website:
+Build website and serve at http://localhost:4000:
 ```
-grunt build
+grunt develop
 ```
-
-Serve the website at http://localhost:4000 and watch for changes:
-```
-grunt serve
-```
+Will also watch for changes, rebuild and trigger a *live reload*.

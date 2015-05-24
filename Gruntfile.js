@@ -41,7 +41,8 @@ module.exports = function(grunt) {
         options: {
           port: 4000,
           hostname: '*',
-          base: '<%= pages.options.dest %>'
+          base: '<%= pages.options.dest %>',
+          livereload: true
         }
       }
     },
@@ -55,11 +56,17 @@ module.exports = function(grunt) {
       },
       concat_uglify: {
         files: ['<%= concat.dist.src %>'],
-        tasks: ['concat', 'uglify']
+        tasks: ['concat', 'uglify'],
+        options: {
+          livereload: true
+        }
       },
       jekyll: {
         files: ['layouts/**/*', 'index.html'],
-        tasks: ['pages:build']
+        tasks: ['pages:build'],
+        options: {
+          livereload: true
+        }
       }
     }
   });
@@ -72,6 +79,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', ['bower_concat', 'concat', 'uglify', 'pages']);
-  grunt.registerTask('serve', ['connect', 'watch']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('develop', ['build', 'connect', 'watch']);
 };
