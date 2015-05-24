@@ -2,9 +2,6 @@
   "name": "renee-bar.github.io",
   "version": "0.0.1",
   "homepage": "https://github.com/renee-bar/renee-bar.github.io",
-  "authors": [
-    "Reto Kaiser <reto@retokaiser.com>"
-  ],
   "main": "index.html",
   "license": "MIT",
   "ignore": [
