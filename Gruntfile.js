@@ -12,18 +12,18 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
-      dist: {
+      js: {
         src: ['<%= bower_concat.all.dest %>', 'js/**/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
     uglify: {
-      dist: {
+      all: {
         options: {
           sourceMap: true
         },
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'dist/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
         }
       }
     },
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         tasks: ['bower_concat']
       },
       concat_uglify: {
-        files: ['<%= concat.dist.src %>'],
+        files: ['<%= concat.js.src %>'],
         tasks: ['concat', 'uglify'],
         options: {
           livereload: true
