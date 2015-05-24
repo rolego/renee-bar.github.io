@@ -3,20 +3,18 @@
 
 Development
 -----------
-
 Install dependencies:
 ```
 bundle install
 npm install
 ```
 
-Build JS:
+Build the website:
 ```
-bower install
-grunt
+grunt build
 ```
 
-Build the site and serve it on `http://localhost:4000`
+Serve the website at http://localhost:4000 and watch for changes:
 ```
-bundle exec jekyll serve --watch
+grunt serve
 ```
