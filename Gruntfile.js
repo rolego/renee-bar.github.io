@@ -8,22 +8,28 @@ module.exports = function(grunt) {
         dest: 'bower_components/.dist/bower.js'
       }
     },
-    concat: {
-      options: {
-        separator: ';'
-      },
-      js: {
-        src: ['<%= bower_concat.all.dest %>', 'js/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
     uglify: {
       all: {
         options: {
           sourceMap: true
         },
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
+          'dist/<%= pkg.name %>.js': ['<%= bower_concat.all.dest %>', 'js/**/*.js']
+        }
+      }
+    },
+    less: {
+      all: {
+        options: {
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>.css.map',
+          plugins: [
+            new (require('less-plugin-autoprefix'))({browsers: ['last 2 versions']})
+          ]
+        },
+        files: {
+          "dist/<%= pkg.name %>.css": "css/main.less"
         }
       }
     },
@@ -50,18 +56,25 @@ module.exports = function(grunt) {
       options: {
         spawn: false
       },
-      bower_concat: {
+      bower_components: {
         files: ['bower_components/**/*.js'],
         tasks: ['bower_concat']
       },
-      concat_uglify: {
-        files: ['<%= concat.js.src %>'],
-        tasks: ['concat', 'uglify'],
+      javascript: {
+        files: ['<%= bower_concat.all.dest %>', 'js/**/*.js'],
+        tasks: ['uglify', 'pages:build'],
         options: {
           livereload: true
         }
       },
-      jekyll: {
+      css: {
+        files: ['css/**/*'],
+        tasks: ['less', 'pages:build'],
+        options: {
+          livereload: true
+        }
+      },
+      html: {
         files: ['layouts/**/*', 'index.html'],
         tasks: ['pages:build'],
         options: {
@@ -72,12 +85,12 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-bower-concat');
   grunt.loadNpmTasks('grunt-jekyll-pages');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('build', ['bower_concat', 'concat', 'uglify', 'pages']);
+  grunt.registerTask('build', ['bower_concat', 'uglify', 'less', 'pages']);
   grunt.registerTask('develop', ['build', 'connect', 'watch']);
 };
