@@ -5,7 +5,9 @@ module.exports = function(grunt) {
 
     bower_concat: {
       all: {
-        dest: 'bower_components/.dist/bower.js'
+        dest: 'bower_components/.dist/bower.js',
+        cssDest: 'bower_components/.dist/bower.css',
+        exclude: ['lesshat']
       }
     },
     uglify: {
