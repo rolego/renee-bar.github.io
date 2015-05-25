@@ -9,12 +9,12 @@ renderTemplate = function(name, vars) {
 };
 
 renderEvents = function(eventList) {
-  var htmlList = eventList.map(function(event) {
-    return renderTemplate('event', {
-      name: event['descriptionHtml']
-    });
+  return renderTemplate('eventList', {
+    'eventList': eventList,
+    'date': function () {
+      return this.from;
+    }
   });
-  return htmlList.join('');
 };
 
 fetch('https://www.denkmal.dev/api/events?venue=Kaserne').then(function(response) {

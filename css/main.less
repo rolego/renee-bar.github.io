@@ -22,6 +22,7 @@ a {
   background-size: 0.9em;
   margin-right: -3px;
 }
+
 a:visited {
   color: @fontColor;
 }
@@ -65,5 +66,28 @@ a:visited {
 
 #agenda {
   position: relative;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+
   min-height: 100px;
+  max-width: 500px;
+
+  .eventList {
+    margin: 0;
+    padding: 0;
+
+    .event {
+      list-style: none;
+
+      .date {
+        font-weight: bold;
+      }
+
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+  }
+
 }

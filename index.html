@@ -21,8 +21,15 @@ layout: default
   <span class="spinner spinner-expanded"></span>
 </section>
 
-<script id="template-event" type="x-tmpl-mustache">
+<script id="template-eventList" type="x-tmpl-mustache">
 {% raw %}
-<p>Jo: {{&name}}</p>
+  <ul class="eventList">
+    {{#eventList}}
+    <li class="event">
+      <div class="date">{{date}}</div>
+      <div class="description">{{&descriptionHtml}}</div>
+    </li>
+    {{/eventList}}
+  </ul>
 {% endraw %}
 </script>

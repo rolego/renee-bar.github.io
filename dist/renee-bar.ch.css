@@ -458,6 +458,23 @@ a:visited {
 }
 #agenda {
   position: relative;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
   min-height: 100px;
+  max-width: 500px;
+}
+#agenda .eventList {
+  margin: 0;
+  padding: 0;
+}
+#agenda .eventList .event {
+  list-style: none;
+}
+#agenda .eventList .event .date {
+  font-weight: bold;
+}
+#agenda .eventList .event:not(:first-child) {
+  margin-top: 20px;
 }
 /*# sourceMappingURL=renee-bar.ch.css.map */
