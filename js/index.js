@@ -12,7 +12,7 @@ renderEvents = function(eventList) {
   return renderTemplate('eventList', {
     'eventList': eventList,
     'date': function () {
-      return this.from;
+      return moment.unix(this.from).format('dd, MMM Do H:mm');
     }
   });
 };
