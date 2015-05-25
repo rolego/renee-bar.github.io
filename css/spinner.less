@@ -20,6 +20,21 @@
   }
 }
 
+.spinner-expanded {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &:before {
+    top: 50%;
+    left: 50%;
+    margin-top: -@spinnerSize/2;
+    margin-left: -@spinnerSize/2;
+  }
+}
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

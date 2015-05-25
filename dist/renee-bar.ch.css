@@ -371,6 +371,19 @@ th {
   -webkit-animation: spinner 1s linear 0s infinite normal none;
           animation: spinner 1s linear 0s infinite normal none;
 }
+.spinner-expanded {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.spinner-expanded:before {
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+}
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -442,5 +455,9 @@ a:visited {
 #header .more .arrow-down {
   width: 7vmin;
   max-width: 35px;
+}
+#agenda {
+  position: relative;
+  min-height: 100px;
 }
 /*# sourceMappingURL=renee-bar.ch.css.map */
