@@ -17,7 +17,7 @@ renderEvents = function(eventList) {
   });
 };
 
-fetch('https://www.denkmal.dev/api/events?venue=Kaserne').then(function(response) {
+fetch('https://www.denkmal.org/api/events?venue=Kaserne').then(function(response) {
   return response.json();
 }).then(function(json) {
   var html = renderEvents(json['events']);
