@@ -460,22 +460,23 @@ a:visited {
 #agenda {
   position: relative;
   margin: 0 auto;
-  padding: 30px;
   text-align: center;
   min-height: 100px;
-  max-width: 500px;
+  max-width: 800px;
 }
 #agenda .eventList {
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
+  padding: 30px;
 }
 #agenda .eventList .event {
   list-style: none;
 }
 #agenda .eventList .event .date {
   font-weight: bold;
+  padding-bottom: 5px;
 }
 #agenda .eventList .event:not(:first-child) {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 /*# sourceMappingURL=renee-bar.ch.css.map */
