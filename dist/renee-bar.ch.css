@@ -415,6 +415,7 @@ html {
   font-weight: 300;
 }
 a {
+  color: black;
   text-decoration: none;
   padding-right: 18px;
   background: url("/img/icon/pop-out.png") no-repeat 100% 0;
