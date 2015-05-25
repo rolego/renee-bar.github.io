@@ -1,0 +1,30 @@
+@spinnerSize: 16px;
+@spinnerColor: black;
+
+.spinner {
+  position: relative;
+  display: inline-block;
+  min-height: @spinnerSize;
+  min-width: @spinnerSize;
+
+  &:before {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    width: @spinnerSize;
+    height: @spinnerSize;
+    border: 1px solid @spinnerColor;
+    border-left-color: transparent;
+    border-radius: 50%;
+    animation: spinner 1s linear 0s infinite normal none;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
