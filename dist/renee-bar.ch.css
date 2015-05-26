@@ -434,7 +434,7 @@ a:visited {
   display: block;
   margin: 0 auto;
   text-transform: uppercase;
-  height: 25vmin;
+  width: 80vmin;
 }
 #header .info {
   margin-top: 10vh;
