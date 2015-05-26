@@ -411,11 +411,11 @@ th {
 }
 html {
   font-family: Helvetica, Arial, sans-serif;
-  color: black;
+  color: #4d4d4d;
   font-weight: 300;
 }
 a {
-  color: black;
+  color: #4d4d4d;
   text-decoration: none;
   padding-right: 18px;
   background: url("/img/icon/pop-out.png") no-repeat 100% 0;
@@ -423,7 +423,7 @@ a {
   margin-right: -3px;
 }
 a:visited {
-  color: black;
+  color: #4d4d4d;
 }
 #header {
   min-height: 100vh;
@@ -439,12 +439,7 @@ a:visited {
 #header .info {
   margin-top: 10vh;
   font-size: 0.9em;
-  color: #4d4d4d;
   line-height: 1.8em;
-}
-#header .info a,
-#header .info a:visited {
-  color: #4d4d4d;
 }
 #header .more {
   position: absolute;
