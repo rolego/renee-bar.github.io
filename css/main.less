@@ -62,15 +62,19 @@ a:visited {
 #agenda {
   position: relative;
   margin: 0 auto;
+  padding: 30px;
   text-align: center;
 
-  min-height: 100px;
+  min-height: 100vh;
   max-width: 800px;
 
+  .spinner {
+    max-height: 30vh;
+  }
+
   .eventList {
-    min-height: 100vh;
     margin: 0;
-    padding: 30px;
+    padding: 0;
 
     .event {
       list-style: none;
