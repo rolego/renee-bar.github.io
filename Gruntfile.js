@@ -86,7 +86,7 @@ module.exports = function(grunt) {
         }
       },
       html: {
-        files: ['layouts/**/*', 'index.html'],
+        files: ['layouts/**/*', 'img/**/*', '*.html'],
         tasks: ['pages:build'],
         options: {
           livereload: true
