@@ -446,6 +446,11 @@ a.button:active {
   text-align: center;
   padding-top: 30vh;
 }
+@media screen and (max-height: 500px) {
+  #header {
+    padding-top: 15vh;
+  }
+}
 #header .logo {
   display: block;
   margin: 0 auto;
@@ -456,6 +461,11 @@ a.button:active {
   margin-top: 10vh;
   font-size: 0.9em;
   line-height: 1.8em;
+}
+@media screen and (max-height: 600px) {
+  #header .info {
+    margin-top: 0;
+  }
 }
 #header .more {
   position: absolute;
