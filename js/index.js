@@ -30,7 +30,7 @@
     $('#eventList-placeholder').html(html);
   };
 
-  fetch('https://www.denkmal.org/api/events?venue=Kaserne').then(function(response) {
+  fetch('https://www.denkmal.org/api/events?venue=Renée').then(function(response) {
     return response.json();
   }).then(function(json) {
     var eventList = json['events'];
