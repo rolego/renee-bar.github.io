@@ -446,7 +446,12 @@ a.button:active {
   text-align: center;
   padding-top: 30vh;
 }
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 500px) {
+  #header {
+    padding-top: 20vh;
+  }
+}
+@media screen and (max-height: 350px) {
   #header {
     padding-top: 15vh;
   }
