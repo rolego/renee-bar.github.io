@@ -414,6 +414,9 @@ html {
   color: #4d4d4d;
   font-weight: 300;
 }
+body {
+  background-color: white;
+}
 a {
   color: #4d4d4d;
   text-decoration: none;
@@ -424,6 +427,19 @@ a {
 }
 a:visited {
   color: #4d4d4d;
+}
+a.button {
+  line-height: 47px;
+  padding: 0 20px;
+  margin: 12px;
+  border-radius: 999px;
+  border: 1px solid #4d4d4d;
+  background: none;
+  display: inline-block;
+}
+a.button:active {
+  background-color: #4d4d4d;
+  color: white;
 }
 #header {
   min-height: 100vh;

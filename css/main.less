@@ -1,7 +1,8 @@
 @import (less) "../bower_components/.dist/bower.css";
 @import (less) "spinner.less";
 
-@fontColor: #4D4D4D;
+@colorBg: white;
+@colorFg: #4D4D4D;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -9,12 +10,16 @@
 
 html {
   font-family: Helvetica, Arial, sans-serif;
-  color: @fontColor;
+  color: @colorFg;
   font-weight: 300;
 }
 
+body {
+  background-color: @colorBg;
+}
+
 a {
-  color: @fontColor;
+  color: @colorFg;
   text-decoration: none;
   padding-right: 18px;
   background: url("/img/icon/pop-out.png") no-repeat 100% 0;
@@ -23,7 +28,22 @@ a {
 }
 
 a:visited {
-  color: @fontColor;
+  color: @colorFg;
+}
+
+a.button {
+  line-height: 47px;
+  padding: 0 20px;
+  margin: 12px;
+  border-radius: 999px;
+  border: 1px solid @colorFg;
+  background: none;
+  display: inline-block;
+
+  &:active {
+    background-color: @colorFg;
+    color: @colorBg;
+  }
 }
 
 #header {
