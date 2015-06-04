@@ -21,14 +21,17 @@ body {
 a {
   color: @colorFg;
   text-decoration: none;
-  padding-right: 18px;
-  background: url("/img/icon/pop-out.png") no-repeat 100% 0;
-  background-size: 0.9em;
-  margin-right: -3px;
 }
 
 a:visited {
   color: @colorFg;
+}
+
+.link-indication {
+  padding-right: 18px;
+  background: url("/img/icon/pop-out.png") no-repeat 100% 0;
+  background-size: 0.9em;
+  margin-right: -3px;
 }
 
 a.button {
@@ -117,6 +120,10 @@ a.button {
         padding-bottom: 5px;
       }
 
+      .description a {
+        .link-indication;
+      }
+
       &:not(:first-child) {
         margin-top: 30px;
       }
@@ -125,15 +132,21 @@ a.button {
 }
 
 #footer {
+  text-align: center;
+
   .connections {
+    padding: 0;
+
     li {
       display: inline-block;
     }
 
     .connect-link {
       display: block;
-      width: 50px;
-      height: 50px;
+      width: 32px;
+      height: 32px;
+      background: no-repeat center;
+      opacity: .2;
 
       &.github {
         background-image: url("/img/icon/connect-github.svg");
