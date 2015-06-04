@@ -46,10 +46,14 @@ a.button {
   }
 }
 
-#header {
+.slide {
+  box-sizing: border-box;
   min-height: 100vh;
-  text-align: center;
+}
+
+#header {
   padding-top: 30vh;
+  text-align: center;
 
   @media screen and (max-height: 500px){
     padding-top: 20vh;
@@ -92,12 +96,10 @@ a.button {
 
 #agenda {
   position: relative;
+  max-width: 800px;
   margin: 0 auto;
   padding: 30px;
   text-align: center;
-
-  min-height: 100vh;
-  max-width: 800px;
 
   .spinner {
     max-height: 30vh;
@@ -120,5 +122,4 @@ a.button {
       }
     }
   }
-
 }
