@@ -30,16 +30,22 @@
     $('#eventList-placeholder').html(html);
   };
 
-  fetch('https://www.denkmal.org/api/events?venue=Renée').then(function(response) {
-    return response.json();
-  }).then(function(json) {
-    var eventList = json['events'];
+  var loadEvents = function(venue, onSuccess, onFailure) {
+    var url = UriTemplate.expand('https://www.denkmal.org/api/events?venue={venue}', {'venue': venue});
+    fetch(url).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      onSuccess(json['events']);
+    }).catch(onFailure);
+  };
+
+  loadEvents('Renée', function(eventList) {
     if (0 === eventList.length) {
       setEventListHtml(renderEventListInfo('No upcoming shows.'));
     } else {
       setEventListHtml(renderEventList(eventList));
     }
-  }).catch(function(error) {
+  }, function(error) {
     setEventListHtml(renderEventListInfo('Failed to display upcoming shows.'));
   });
 })();

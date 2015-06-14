@@ -17,6 +17,7 @@
     "jquery": "~2.1.4",
     "normalize.css": "~3.0.3",
     "moment": "~2.10.3",
-    "es6-promise": "~2.2.0"
+    "es6-promise": "~2.2.0",
+    "uri-template.js": "~0.1.2"
   }
 }
