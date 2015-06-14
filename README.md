@@ -1,6 +1,6 @@
-[www.renee-bar.ch](http://www.renee-bar.ch)
-================
-Website for the *Renée Bar* in Basel.
+[www.renee.ch](http://www.renee.ch)
+============
+Website for the *RENÉE* bar in Basel.
 
 Development
 -----------
