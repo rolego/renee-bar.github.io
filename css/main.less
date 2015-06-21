@@ -50,7 +50,6 @@ a.button {
 }
 
 .slide {
-  box-sizing: border-box;
   min-height: 100vh;
 }
 
@@ -97,63 +96,72 @@ a.button {
   }
 }
 
-#agenda {
+.main {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
+  padding: 30px 30px 50px;
   text-align: center;
 
-  .spinner {
-    max-height: 30vh;
-  }
+  #agenda {
+    max-width: 800px;
+    margin: 0 auto;
 
-  .eventList {
-    margin: 0;
-    padding: 0;
+    .spinner {
+      max-height: 30vh;
+    }
 
-    .event {
-      list-style: none;
+    .eventList {
+      margin: 0;
+      padding: 0;
 
-      .date {
-        font-weight: bold;
-        padding-bottom: 5px;
-      }
+      .event {
+        list-style: none;
 
-      .description a {
-        .link-indication;
-      }
+        .date {
+          font-weight: bold;
+          padding-bottom: 5px;
+        }
 
-      &:not(:first-child) {
-        margin-top: 30px;
+        .description a {
+          .link-indication;
+        }
+
+        &:not(:first-child) {
+          margin-top: 30px;
+        }
       }
     }
   }
-}
 
-#footer {
-  text-align: center;
+  #footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding: 9px;
 
-  .connections {
-    padding: 0;
+    .connections {
+      margin: 0;
+      padding: 0;
 
-    li {
-      display: inline-block;
-    }
-
-    .connect-link {
-      display: block;
-      width: 32px;
-      height: 32px;
-      background: no-repeat center;
-      opacity: .2;
-
-      &.github {
-        background-image: url("/img/icon/connect-github.svg");
+      li {
+        display: inline-block;
       }
 
-      &.madeinbasel {
-        background-image: url("/img/icon/connect-madeinbasel.svg");
+      .connect-link {
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: no-repeat center;
+        opacity: .2;
+
+        &.github {
+          background-image: url("/img/icon/connect-github.svg");
+        }
+
+        &.madeinbasel {
+          background-image: url("/img/icon/connect-madeinbasel.svg");
+        }
       }
     }
   }
