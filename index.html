@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<header id="header">
+<header id="header" class="slide">
   <img class="logo" src="/img/logo.png" alt="RENÉE">
 
   <div class="info">
@@ -16,11 +16,20 @@ layout: default
   </div>
 </header>
 
-<section id="agenda">
-  <div id="eventList-placeholder">
-    <span class="spinner spinner-expanded"></span>
-  </div>
-</section>
+<div class="main slide">
+  <section id="agenda">
+    <div id="eventList-placeholder">
+      <span class="spinner spinner-expanded"></span>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <ul class="connections">
+      <li><a class="connect-link github" href="https://github.com/renee-bar/renee-bar.github.io"></a></li>
+      <li><a class="connect-link madeinbasel" href="http://www.madeinbasel.org/"></a></li>
+    </ul>
+  </footer>
+</div>
 
 <script id="template-eventList" type="x-tmpl-mustache">
 {% raw %}

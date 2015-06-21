@@ -420,13 +420,15 @@ body {
 a {
   color: #4d4d4d;
   text-decoration: none;
+}
+a:visited {
+  color: #4d4d4d;
+}
+.link-indication {
   padding-right: 18px;
   background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
   background-size: 0.9em;
   margin-right: -3px;
-}
-a:visited {
-  color: #4d4d4d;
 }
 a.button {
   line-height: 42px;
@@ -441,10 +443,12 @@ a.button:active {
   background-color: #4d4d4d;
   color: white;
 }
-#header {
+.slide {
   min-height: 100vh;
-  text-align: center;
+}
+#header {
   padding-top: 30vh;
+  text-align: center;
 }
 @media screen and (max-height: 500px) {
   #header {
@@ -483,29 +487,64 @@ a.button:active {
   width: 7vmin;
   max-width: 35px;
 }
-#agenda {
+.main {
   position: relative;
-  margin: 0 auto;
-  padding: 30px;
+  padding: 30px 30px 50px;
   text-align: center;
-  min-height: 100vh;
-  max-width: 800px;
 }
-#agenda .spinner {
+.main #agenda {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.main #agenda .spinner {
   max-height: 30vh;
 }
-#agenda .eventList {
+.main #agenda .eventList {
   margin: 0;
   padding: 0;
 }
-#agenda .eventList .event {
+.main #agenda .eventList .event {
   list-style: none;
 }
-#agenda .eventList .event .date {
+.main #agenda .eventList .event .date {
   font-weight: bold;
   padding-bottom: 5px;
 }
-#agenda .eventList .event:not(:first-child) {
+.main #agenda .eventList .event .description a {
+  padding-right: 18px;
+  background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
+  background-size: 0.9em;
+  margin-right: -3px;
+}
+.main #agenda .eventList .event:not(:first-child) {
   margin-top: 30px;
+}
+.main #footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  padding: 9px;
+}
+.main #footer .connections {
+  margin: 0;
+  padding: 0;
+}
+.main #footer .connections li {
+  display: inline-block;
+}
+.main #footer .connections .connect-link {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: no-repeat center;
+  opacity: .2;
+}
+.main #footer .connections .connect-link.github {
+  background-image: url("/img/icon/connect-github.svg");
+}
+.main #footer .connections .connect-link.madeinbasel {
+  background-image: url("/img/icon/connect-madeinbasel.svg");
 }
 /*# sourceMappingURL=renee.ch.css.map */
