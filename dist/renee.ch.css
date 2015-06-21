@@ -450,40 +450,45 @@ a.button:active {
   padding-top: 30vh;
   text-align: center;
 }
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 600px) {
   #header {
     padding-top: 20vh;
   }
 }
-@media screen and (max-height: 350px) {
+@media screen and (max-height: 450px) {
   #header {
     padding-top: 15vh;
   }
 }
 #header .logo {
+  position: relative;
+  z-index: 1;
+  background: white;
   display: block;
   margin: 0 auto;
   text-transform: uppercase;
   height: 30vmin;
 }
 #header .info {
-  margin-top: 10vh;
-  font-size: 0.9em;
-  line-height: 1.8em;
-}
-@media screen and (max-height: 350px) {
-  #header .info {
-    margin-top: 0;
-  }
-}
-#header .more {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
+  font-size: 0.9em;
+  line-height: 1.8em;
 }
-#header .more .arrow-down {
+#header .info .more {
+  margin-top: 3vh;
+}
+@media screen and (max-height: 350px) {
+  #header .info .more {
+    margin-top: 0;
+  }
+}
+#header .info .more .arrow-down {
+  display: block;
+  margin: 0 auto;
   width: 7vmin;
   max-width: 35px;
 }

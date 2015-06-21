@@ -57,15 +57,18 @@ a.button {
   padding-top: 30vh;
   text-align: center;
 
-  @media screen and (max-height: 500px){
+  @media screen and (max-height: 600px){
     padding-top: 20vh;
   }
 
-  @media screen and (max-height: 350px){
+  @media screen and (max-height: 450px){
     padding-top: 15vh;
   }
 
   .logo {
+    position: relative;
+    z-index: 1;
+    background: @colorBg;
     display: block;
     margin: 0 auto;
     text-transform: uppercase;
@@ -73,25 +76,28 @@ a.button {
   }
 
   .info {
-    margin-top: 10vh;
-    font-size: 0.9em;
-    line-height: 1.8em;
-
-    @media screen and (max-height: 350px){
-      margin-top: 0;
-    }
-  }
-
-  .more {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     text-align: center;
 
-    .arrow-down {
-      width: 7vmin;
-      max-width: 35px;
+    font-size: 0.9em;
+    line-height: 1.8em;
+
+    .more {
+      margin-top: 3vh;
+
+      @media screen and (max-height: 350px){
+        margin-top: 0;
+      }
+
+      .arrow-down {
+        display: block;
+        margin: 0 auto;
+        width: 7vmin;
+        max-width: 35px;
+      }
     }
   }
 }
