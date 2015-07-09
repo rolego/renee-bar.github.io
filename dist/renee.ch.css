@@ -460,6 +460,11 @@ a.button:active {
     padding-top: 15vh;
   }
 }
+@media screen and (max-height: 400px) {
+  #header {
+    padding-top: 5vh;
+  }
+}
 #header .logo {
   position: relative;
   z-index: 1;
@@ -467,7 +472,7 @@ a.button:active {
   display: block;
   margin: 0 auto;
   text-transform: uppercase;
-  height: 30vmin;
+  height: 40vmin;
 }
 #header .info {
   position: absolute;
@@ -481,7 +486,7 @@ a.button:active {
 #header .info .more {
   margin-top: 3vh;
 }
-@media screen and (max-height: 350px) {
+@media screen and (max-height: 400px) {
   #header .info .more {
     margin-top: 0;
   }
