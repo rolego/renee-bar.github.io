@@ -411,18 +411,18 @@ th {
 }
 html {
   font-family: Helvetica, Arial, sans-serif;
-  color: #4d4d4d;
+  color: #4D4D4D;
   font-weight: 300;
 }
 body {
   background-color: white;
 }
 a {
-  color: #4d4d4d;
+  color: #4D4D4D;
   text-decoration: none;
 }
 a:visited {
-  color: #4d4d4d;
+  color: #4D4D4D;
 }
 .link-indication {
   padding-right: 18px;
@@ -435,12 +435,12 @@ a.button {
   padding: 0 20px;
   margin: 12px;
   border-radius: 4px;
-  border: 1px solid #4d4d4d;
+  border: 1px solid #4D4D4D;
   background: none;
   display: inline-block;
 }
 a.button:active {
-  background-color: #4d4d4d;
+  background-color: #4D4D4D;
   color: white;
 }
 .slide {
@@ -550,6 +550,9 @@ a.button:active {
   height: 32px;
   background: no-repeat center;
   opacity: .2;
+}
+.main #footer .connections .connect-link.facebook {
+  background-image: url("/img/icon/connect-facebook.svg");
 }
 .main #footer .connections .connect-link.github {
   background-image: url("/img/icon/connect-github.svg");
