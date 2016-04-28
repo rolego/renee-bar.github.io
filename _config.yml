@@ -10,4 +10,4 @@ permalink: pretty
 destination: '.jekyll'
 layouts_dir: 'layouts'
 includes_dir: 'includes'
-exclude: ['/bower_components', '/node_modules']
+exclude: ['/bower_components', '/node_modules', '/vendor']
