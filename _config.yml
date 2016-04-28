@@ -1,6 +1,13 @@
 name: RENÉE
-markdown: redcarpet
+google_analytics_id: 'UA-77077711-1'
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
 permalink: pretty
+
 destination: '.jekyll'
-layouts: 'layouts'
+layouts_dir: 'layouts'
+includes_dir: 'includes'
 exclude: ['/bower_components', '/node_modules']
