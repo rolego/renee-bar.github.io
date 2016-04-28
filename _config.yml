@@ -1,6 +1,10 @@
 name: RENÉE
-markdown: redcarpet
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
 permalink: pretty
 destination: '.jekyll'
-layouts: 'layouts'
+layouts_dir: 'layouts'
+includes_dir: 'includes'
 exclude: ['/bower_components', '/node_modules']
