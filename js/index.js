@@ -13,7 +13,7 @@
     return renderTemplate('eventList', {
       'eventList': eventList,
       'date': function() {
-        var from = moment.unix(this.from);
+        var from = moment.unix(this['from']).tz(this['timeZone']);
         var formatTime = (0 == from.format('m')) ? 'ha' : 'h.mma';
         return from.format('dd, D MMM ' + formatTime);
       }
