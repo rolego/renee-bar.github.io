@@ -47,5 +47,6 @@
     }
   }, function(error) {
     setEventListHtml(renderEventListInfo('Failed to display upcoming shows.'));
+    throw error;
   });
 })();
