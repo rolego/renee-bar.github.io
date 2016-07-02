@@ -30,8 +30,8 @@
     $('#eventList-placeholder').html(html);
   };
 
-  var loadEvents = function(venue, onSuccess, onFailure) {
-    var url = UriTemplate.expand('https://www.denkmal.org/api/events?venue={venue}', {'venue': venue});
+  var loadEvents = function(region, venue, onSuccess, onFailure) {
+    var url = UriTemplate.expand('https://www.denkmal.org/{region}/api/events?venue={venue}', {'region': region, 'venue': venue});
     fetch(url).then(function(response) {
       return response.json();
     }).then(function(json) {
@@ -39,7 +39,7 @@
     }).catch(onFailure);
   };
 
-  loadEvents('Renée', function(eventList) {
+  loadEvents('basel', 'Renée', function(eventList) {
     if (0 === eventList.length) {
       setEventListHtml(renderEventListInfo('No upcoming shows.'));
     } else {
