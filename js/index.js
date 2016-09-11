@@ -17,8 +17,7 @@
         if (from.format('H') < 6) {
           from.subtract(1, 'day');
         }
-        var formatTime = (0 == from.format('m')) ? 'ha' : 'h.mma';
-        return from.format('dd, D MMM ' + formatTime);
+        return from.format('dd, D MMM H:mm');
       }
     });
   };
