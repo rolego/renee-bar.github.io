@@ -5,8 +5,10 @@ module.exports = function(grunt) {
 
     bower_concat: {
       all: {
-        dest: 'bower_components/.dist/bower.js',
-        cssDest: 'bower_components/.dist/bower.css',
+        dest: {
+          'js': 'bower_components/.dist/bower.js',
+          'css': 'bower_components/.dist/bower.css'
+        },
         exclude: ['lesshat']
       }
     },
@@ -17,7 +19,7 @@ module.exports = function(grunt) {
           sourceMapIncludeSources: true
         },
         files: {
-          'dist/<%= pkg.name %>.js': ['<%= bower_concat.all.dest %>', 'js/**/*.js']
+          'dist/<%= pkg.name %>.js': ['<%= bower_concat.all.dest.js %>', 'js/**/*.js']
         }
       }
     },
@@ -72,7 +74,7 @@ module.exports = function(grunt) {
         tasks: ['bower_concat']
       },
       javascript: {
-        files: ['<%= bower_concat.all.dest %>', 'js/**/*.js'],
+        files: ['<%= bower_concat.all.dest.js %>', 'js/**/*.js'],
         tasks: ['uglify', 'copy:dist'],
         options: {
           livereload: true
