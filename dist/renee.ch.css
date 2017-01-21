@@ -507,6 +507,9 @@ a.button:active {
   font-weight: bold;
   padding-bottom: 5px;
 }
+.main #agenda .eventList .event .description p {
+  margin: 0;
+}
 .main #agenda .eventList .event .description a {
   padding-right: 18px;
   background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
