@@ -19,7 +19,11 @@ module.exports = function(grunt) {
           sourceMapIncludeSources: true
         },
         files: {
-          'dist/<%= pkg.name %>.js': ['<%= bower_concat.all.dest.js %>', 'js/**/*.js']
+          'dist/<%= pkg.name %>.js': [
+            '<%= bower_concat.all.dest.js %>',
+            'node_modules/prismic.io/dist/prismic.io.js',
+            'js/**/*.js'
+          ]
         }
       }
     },
