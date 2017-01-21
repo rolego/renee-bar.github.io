@@ -1,5 +1,6 @@
 @import (less) "../bower_components/.dist/bower.css";
 @import (less) "spinner.less";
+@import (less) "appear.less";
 
 @colorBg: white;
 @colorFg: #4D4D4D;
@@ -89,6 +90,10 @@ a.button {
     font-size: 0.9em;
     line-height: 1.8em;
 
+    p {
+      margin: 0;
+    }
+
     .more {
       margin-top: 3vh;
 
@@ -114,10 +119,6 @@ a.button {
   #agenda {
     max-width: 800px;
     margin: 0 auto;
-
-    .spinner {
-      max-height: 30vh;
-    }
 
     .eventList {
       margin: 0;

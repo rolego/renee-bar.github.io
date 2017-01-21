@@ -13,7 +13,7 @@
   };
 
   var renderEventList = function(eventList) {
-    return renderTemplate('eventList', {
+    var html = renderTemplate('eventList', {
       'eventList': eventList,
       'date': function() {
         var from = moment(this.getTimestamp('event.from')).tz(venueTimeZone);
@@ -26,16 +26,21 @@
         return this.getStructuredText('event.description').asHtml();
       }
     });
+    $('#eventList-placeholder').addClass('appear-done').html(html);
   };
 
   var renderEventListInfo = function(text) {
-    return renderTemplate('eventList-info', {
+    var html = renderTemplate('eventList-info', {
       'text': text
     });
+    $('#eventList-placeholder').addClass('appear-done').html(html);
   };
 
-  var setEventListHtml = function(html) {
-    $('#eventList-placeholder').html(html);
+  var renderHomepage = function(homepage) {
+    var html = renderTemplate('homepage', {
+      'openingHours': homepage.getStructuredText('homepage.opening-hours').asHtml()
+    });
+    $('#homepage-placeholder').addClass('appear-done').html(html);
   };
 
   /**
@@ -59,16 +64,36 @@
       });
   };
 
+  /**
+   * @returns {Promise}
+   */
+  var loadHomepage = function() {
+    return Prismic.api('https://reneech.prismic.io/api')
+      .then(function(api) {
+        return api.query([
+          Prismic.Predicates.at('document.type', 'homepage')
+        ]);
+      })
+      .then(function(response) {
+        return response.results[0];
+      });
+  };
+
   loadEvents()
     .then(function(eventList) {
       if (0 === eventList.length) {
-        setEventListHtml(renderEventListInfo('No upcoming shows.'));
+        renderEventListInfo('No upcoming shows.');
       } else {
-        setEventListHtml(renderEventList(eventList));
+        renderEventList(eventList);
       }
     })
     .catch(function(error) {
-      setEventListHtml(renderEventListInfo('Failed to display upcoming shows.'));
+      renderEventListInfo('Failed to display upcoming shows.');
       throw error;
+    });
+
+  loadHomepage()
+    .then(function(homepage) {
+      renderHomepage(homepage);
     });
 })();

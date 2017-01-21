@@ -391,6 +391,13 @@ th {
     transform: rotate(360deg);
   }
 }
+.appear {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.appear.appear-done {
+  opacity: 1;
+}
 *,
 *:before,
 *:after {
@@ -470,6 +477,9 @@ a.button:active {
   font-size: 0.9em;
   line-height: 1.8em;
 }
+#header .info p {
+  margin: 0;
+}
 #header .info .more {
   margin-top: 3vh;
 }
@@ -492,9 +502,6 @@ a.button:active {
 .main #agenda {
   max-width: 800px;
   margin: 0 auto;
-}
-.main #agenda .spinner {
-  max-height: 30vh;
 }
 .main #agenda .eventList {
   margin: 0;
