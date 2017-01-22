@@ -405,6 +405,12 @@ th {
   max-width: 40vw;
   max-height: 40vh;
 }
+.rich-text a {
+  padding-right: 18px;
+  background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
+  background-size: 0.9em;
+  margin-right: -3px;
+}
 *,
 *:before,
 *:after {
@@ -523,12 +529,6 @@ a.button:active {
 .main #agenda .eventList .event .date {
   font-weight: bold;
   padding-bottom: 5px;
-}
-.main #agenda .eventList .event .description a {
-  padding-right: 18px;
-  background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
-  background-size: 0.9em;
-  margin-right: -3px;
 }
 .main #agenda .eventList .event:not(:first-child) {
   margin-top: 30px;
