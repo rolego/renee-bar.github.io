@@ -12,6 +12,14 @@ module.exports = function(grunt) {
         exclude: ['lesshat']
       }
     },
+    browserify: {
+      all: {
+        src: [
+          'js/index.js'
+        ],
+        dest: 'js/.dist/index.js'
+      }
+    },
     uglify: {
       all: {
         options: {
@@ -21,8 +29,7 @@ module.exports = function(grunt) {
         files: {
           'dist/<%= pkg.name %>.js': [
             '<%= bower_concat.all.dest.js %>',
-            'node_modules/prismic.io/dist/prismic.io.js',
-            'js/**/*.js'
+            '<%= browserify.all.dest %>'
           ]
         }
       }
@@ -79,7 +86,7 @@ module.exports = function(grunt) {
       },
       javascript: {
         files: ['<%= bower_concat.all.dest.js %>', 'js/**/*.js'],
-        tasks: ['uglify', 'copy:dist'],
+        tasks: ['browserify', 'uglify', 'copy:dist'],
         options: {
           livereload: true
         }
@@ -102,6 +109,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-bower-concat');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-jekyll-pages');
@@ -110,6 +118,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('build', ['bower_concat', 'uglify', 'less', 'pages']);
+  grunt.registerTask('build', ['bower_concat', 'browserify', 'uglify', 'less', 'pages']);
   grunt.registerTask('develop', ['build', 'connect', 'watch']);
 };

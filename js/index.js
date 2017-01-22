@@ -1,3 +1,6 @@
+const Prismic = require('prismic.io');
+const queryString = require('query-string');
+
 (function() {
   var venueTimeZone = 'Europe/Zurich';
   var dayOffset = 6;
@@ -47,61 +50,64 @@
   };
 
   /**
+   * @param {Function} prismicQuery
    * @returns {Promise}
    */
-  var loadEvents = function() {
+  var loadEvents = function(prismicQuery) {
     var dateMin = moment().tz(venueTimeZone)
       .subtract(dayOffset, 'hours')
       .set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0})
       .add(dayOffset, 'hours')
       .toDate();
-    return Prismic.api('https://reneech.prismic.io/api')
-      .then(function(api) {
-        return api.query([
-          Prismic.Predicates.at('document.type', 'event'),
-          Prismic.Predicates.dateAfter('my.event.from', dateMin)
-        ]);
-      })
-      .then(function(response) {
-        return response.results;
-      });
+    return prismicQuery([
+      Prismic.Predicates.at('document.type', 'event'),
+      Prismic.Predicates.dateAfter('my.event.from', dateMin)
+    ]).then(function(response) {
+      return response.results;
+    });
   };
 
   /**
+   * @param {Function} prismicQuery
    * @returns {Promise}
    */
-  var loadHomepage = function() {
-    return Prismic.api('https://reneech.prismic.io/api')
-      .then(function(api) {
-        return api.query([
-          Prismic.Predicates.at('document.type', 'homepage')
-        ]);
-      })
-      .then(function(response) {
-        return response.results[0];
-      });
+  var loadHomepage = function(prismicQuery) {
+    return prismicQuery([
+      Prismic.Predicates.at('document.type', 'homepage')
+    ]).then(function(response) {
+      return response.results[0];
+    });
   };
 
-  loadEvents()
-    .then(function(eventList) {
-      if (0 === eventList.length) {
-        setRenderHtml('eventList', renderEventListInfo('No upcoming shows.'));
-      } else {
-        setRenderHtml('eventList', renderEventList(eventList));
-      }
-    })
-    .catch(function(error) {
-      setRenderHtml('eventList', renderEventListInfo('Failed to display upcoming shows.'));
-      throw error;
-    });
+  Prismic.api('https://reneech.prismic.io/api').then(function(prismicApi) {
 
-  loadHomepage()
-    .then(function(homepage) {
-      setRenderHtml('info', renderInfo(homepage));
+    var prismicRef = queryString.parse(location.search)['token'];
+    var prismicQuery = function(q) {
+      return prismicApi.query(q, {ref: prismicRef});
+    };
 
-      var introText = homepage.getStructuredText('homepage.intro-text');
-      if (introText) {
-        setRenderHtml('intro', introText.asHtml());
-      }
-    });
+    loadEvents(prismicQuery)
+      .then(function(eventList) {
+        if (0 === eventList.length) {
+          setRenderHtml('eventList', renderEventListInfo('No upcoming shows.'));
+        } else {
+          setRenderHtml('eventList', renderEventList(eventList));
+        }
+      })
+      .catch(function(error) {
+        setRenderHtml('eventList', renderEventListInfo('Failed to display upcoming shows.'));
+        throw error;
+      });
+
+    loadHomepage(prismicQuery)
+      .then(function(homepage) {
+        setRenderHtml('info', renderInfo(homepage));
+        var introText = homepage.getStructuredText('homepage.intro-text');
+        if (introText) {
+          setRenderHtml('intro', introText.asHtml());
+        }
+      });
+
+  });
+
 })();
