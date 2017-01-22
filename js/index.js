@@ -12,8 +12,14 @@
     return Mustache.render(template, vars);
   };
 
+  var setRenderHtml = function(name, html) {
+    var $element = $('[data-render="' + name + '"]');
+    $element.addClass('appear-done');
+    $element.html(html);
+  };
+
   var renderEventList = function(eventList) {
-    var html = renderTemplate('eventList', {
+    return renderTemplate('eventList', {
       'eventList': eventList,
       'date': function() {
         var from = moment(this.getTimestamp('event.from')).tz(venueTimeZone);
@@ -26,21 +32,18 @@
         return this.getStructuredText('event.description').asHtml();
       }
     });
-    $('#eventList-placeholder').addClass('appear-done').html(html);
   };
 
   var renderEventListInfo = function(text) {
-    var html = renderTemplate('eventList-info', {
+    return renderTemplate('eventList-info', {
       'text': text
     });
-    $('#eventList-placeholder').addClass('appear-done').html(html);
   };
 
-  var renderHomepage = function(homepage) {
-    var html = renderTemplate('homepage', {
+  var renderInfo = function(homepage) {
+    return renderTemplate('info', {
       'openingHours': homepage.getStructuredText('homepage.opening-hours').asHtml()
     });
-    $('#homepage-placeholder').addClass('appear-done').html(html);
   };
 
   /**
@@ -82,18 +85,23 @@
   loadEvents()
     .then(function(eventList) {
       if (0 === eventList.length) {
-        renderEventListInfo('No upcoming shows.');
+        setRenderHtml('eventList', renderEventListInfo('No upcoming shows.'));
       } else {
-        renderEventList(eventList);
+        setRenderHtml('eventList', renderEventList(eventList));
       }
     })
     .catch(function(error) {
-      renderEventListInfo('Failed to display upcoming shows.');
+      setRenderHtml('eventList', renderEventListInfo('Failed to display upcoming shows.'));
       throw error;
     });
 
   loadHomepage()
     .then(function(homepage) {
-      renderHomepage(homepage);
+      setRenderHtml('info', renderInfo(homepage));
+
+      var introText = homepage.getStructuredText('homepage.intro-text');
+      if (introText) {
+        setRenderHtml('intro', introText.asHtml());
+      }
     });
 })();

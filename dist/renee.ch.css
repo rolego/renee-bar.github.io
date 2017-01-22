@@ -499,6 +499,9 @@ a.button:active {
   padding: 30px 30px 50px;
   text-align: center;
 }
+.main #intro.appear-done {
+  margin-bottom: 50px;
+}
 .main #agenda {
   max-width: 800px;
   margin: 0 auto;

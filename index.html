@@ -5,15 +5,14 @@ layout: default
 <header id="header" class="slide">
   <img class="logo" src="/img/logo.jpg" alt="RENÉE">
 
-  <div class="info">
-    <div id="homepage-placeholder" class="appear"></div>
+  <div class="info appear" data-render="info">
   </div>
 </header>
 
 <div class="main slide">
-  <section id="agenda">
-    <div id="eventList-placeholder" class="appear">
-    </div>
+  <div id="intro" class="appear" data-render="intro"></div>
+
+  <section id="agenda" class="appear" data-render="eventList">
   </section>
 
   <footer id="footer">
@@ -46,7 +45,7 @@ layout: default
 {% endraw %}
 </script>
 
-<script id="template-homepage" type="x-tmpl-mustache">
+<script id="template-info" type="x-tmpl-mustache">
 {% raw %}
   <p>Bar and live venue</p>
   {{&openingHours}}
