@@ -10,7 +10,7 @@ layout: default
 </header>
 
 <div class="main slide">
-  <div id="intro" class="appear" data-render="intro"></div>
+  <div id="intro" class="appear rich-text" data-render="intro"></div>
 
   <section id="agenda" class="appear" data-render="eventList">
   </section>
@@ -30,7 +30,7 @@ layout: default
     {{#eventList}}
     <li class="event">
       <div class="date">{{date}}</div>
-      <div class="description">{{&description}}</div>
+      <div class="description rich-text">{{&description}}</div>
     </li>
     {{/eventList}}
   </ul>
