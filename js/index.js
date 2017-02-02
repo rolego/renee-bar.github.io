@@ -62,7 +62,9 @@ const queryString = require('query-string');
     return prismicQuery([
       Prismic.Predicates.at('document.type', 'event'),
       Prismic.Predicates.dateAfter('my.event.from', dateMin)
-    ]).then(function(response) {
+    ], {
+      orderings: '[my.event.from]'
+    }).then(function(response) {
       return response.results;
     });
   };
@@ -82,8 +84,10 @@ const queryString = require('query-string');
   Prismic.api('https://reneech.prismic.io/api').then(function(prismicApi) {
 
     var prismicRef = queryString.parse(location.search)['token'];
-    var prismicQuery = function(q) {
-      return prismicApi.query(q, {ref: prismicRef});
+    var prismicQuery = function(q, options) {
+      options = options || {};
+      options['ref'] = prismicRef;
+      return prismicApi.query(q, options);
     };
 
     loadEvents(prismicQuery)
