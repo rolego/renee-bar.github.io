@@ -1,5 +1,7 @@
 @import (less) "../bower_components/.dist/bower.css";
 @import (less) "spinner.less";
+@import (less) "appear.less";
+@import (less) "rich-text.less";
 
 @colorBg: white;
 @colorFg: #4D4D4D;
@@ -57,15 +59,15 @@ a.button {
   padding-top: 30vh;
   text-align: center;
 
-  @media screen and (max-height: 600px){
+  @media screen and (max-height: 600px) {
     padding-top: 20vh;
   }
 
-  @media screen and (max-height: 450px){
+  @media screen and (max-height: 450px) {
     padding-top: 15vh;
   }
 
-  @media screen and (max-height: 400px){
+  @media screen and (max-height: 400px) {
     padding-top: 5vh;
   }
 
@@ -89,10 +91,14 @@ a.button {
     font-size: 0.9em;
     line-height: 1.8em;
 
+    p {
+      margin: 0;
+    }
+
     .more {
       margin-top: 3vh;
 
-      @media screen and (max-height: 400px){
+      @media screen and (max-height: 400px) {
         margin-top: 0;
       }
 
@@ -111,13 +117,15 @@ a.button {
   padding: 30px 30px 50px;
   text-align: center;
 
+  #intro {
+    &.appear-done {
+      margin-bottom: 50px;
+    }
+  }
+
   #agenda {
     max-width: 800px;
     margin: 0 auto;
-
-    .spinner {
-      max-height: 30vh;
-    }
 
     .eventList {
       margin: 0;
@@ -129,10 +137,6 @@ a.button {
         .date {
           font-weight: bold;
           padding-bottom: 5px;
-        }
-
-        .description a {
-          .link-indication;
         }
 
         &:not(:first-child) {

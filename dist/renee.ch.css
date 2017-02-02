@@ -391,6 +391,26 @@ th {
     transform: rotate(360deg);
   }
 }
+.appear {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.appear.appear-done {
+  opacity: 1;
+}
+.rich-text p {
+  margin: 0;
+}
+.rich-text img {
+  max-width: 40vw;
+  max-height: 40vh;
+}
+.rich-text a {
+  padding-right: 18px;
+  background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
+  background-size: 0.9em;
+  margin-right: -3px;
+}
 *,
 *:before,
 *:after {
@@ -470,6 +490,9 @@ a.button:active {
   font-size: 0.9em;
   line-height: 1.8em;
 }
+#header .info p {
+  margin: 0;
+}
 #header .info .more {
   margin-top: 3vh;
 }
@@ -489,12 +512,12 @@ a.button:active {
   padding: 30px 30px 50px;
   text-align: center;
 }
+.main #intro.appear-done {
+  margin-bottom: 50px;
+}
 .main #agenda {
   max-width: 800px;
   margin: 0 auto;
-}
-.main #agenda .spinner {
-  max-height: 30vh;
 }
 .main #agenda .eventList {
   margin: 0;
@@ -506,12 +529,6 @@ a.button:active {
 .main #agenda .eventList .event .date {
   font-weight: bold;
   padding-bottom: 5px;
-}
-.main #agenda .eventList .event .description a {
-  padding-right: 18px;
-  background: url("/img/icon/pop-out.svg") no-repeat 100% 0;
-  background-size: 0.9em;
-  margin-right: -3px;
 }
 .main #agenda .eventList .event:not(:first-child) {
   margin-top: 30px;

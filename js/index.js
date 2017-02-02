@@ -1,4 +1,10 @@
+const Prismic = require('prismic.io');
+const queryString = require('query-string');
+
 (function() {
+  var venueTimeZone = 'Europe/Zurich';
+  var dayOffset = 6;
+
   var templateCache = {};
   var renderTemplate = function(name, vars) {
     var template = templateCache[name];
@@ -9,15 +15,24 @@
     return Mustache.render(template, vars);
   };
 
+  var setRenderHtml = function(name, html) {
+    var $element = $('[data-render="' + name + '"]');
+    $element.addClass('appear-done');
+    $element.html(html);
+  };
+
   var renderEventList = function(eventList) {
     return renderTemplate('eventList', {
       'eventList': eventList,
       'date': function() {
-        var from = moment.unix(this['from']).tz(this['timeZone']);
-        if (from.format('H') < 6) {
+        var from = moment(this.getTimestamp('event.from')).tz(venueTimeZone);
+        if (from.format('H') < dayOffset) {
           from.subtract(1, 'day');
         }
         return from.format('dd, D MMM H:mm');
+      },
+      'description': function() {
+        return this.getStructuredText('event.description').asHtml();
       }
     });
   };
@@ -28,27 +43,71 @@
     });
   };
 
-  var setEventListHtml = function(html) {
-    $('#eventList-placeholder').html(html);
+  var renderInfo = function(homepage) {
+    return renderTemplate('info', {
+      'openingHours': homepage.getStructuredText('homepage.opening-hours').asHtml()
+    });
   };
 
-  var loadEvents = function(region, venue, onSuccess, onFailure) {
-    var url = UriTemplate.expand('https://www.denkmal.org/{region}/api/events?venue={venue}', {'region': region, 'venue': venue});
-    fetch(url).then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      onSuccess(json['events']);
-    }).catch(onFailure);
+  /**
+   * @param {Function} prismicQuery
+   * @returns {Promise}
+   */
+  var loadEvents = function(prismicQuery) {
+    var dateMin = moment().tz(venueTimeZone)
+      .subtract(dayOffset, 'hours')
+      .set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0})
+      .add(dayOffset, 'hours')
+      .toDate();
+    return prismicQuery([
+      Prismic.Predicates.at('document.type', 'event'),
+      Prismic.Predicates.dateAfter('my.event.from', dateMin)
+    ]).then(function(response) {
+      return response.results;
+    });
   };
 
-  loadEvents('basel', 'Renée', function(eventList) {
-    if (0 === eventList.length) {
-      setEventListHtml(renderEventListInfo('No upcoming shows.'));
-    } else {
-      setEventListHtml(renderEventList(eventList));
-    }
-  }, function(error) {
-    setEventListHtml(renderEventListInfo('Failed to display upcoming shows.'));
-    throw error;
+  /**
+   * @param {Function} prismicQuery
+   * @returns {Promise}
+   */
+  var loadHomepage = function(prismicQuery) {
+    return prismicQuery([
+      Prismic.Predicates.at('document.type', 'homepage')
+    ]).then(function(response) {
+      return response.results[0];
+    });
+  };
+
+  Prismic.api('https://reneech.prismic.io/api').then(function(prismicApi) {
+
+    var prismicRef = queryString.parse(location.search)['token'];
+    var prismicQuery = function(q) {
+      return prismicApi.query(q, {ref: prismicRef});
+    };
+
+    loadEvents(prismicQuery)
+      .then(function(eventList) {
+        if (0 === eventList.length) {
+          setRenderHtml('eventList', renderEventListInfo('No upcoming shows.'));
+        } else {
+          setRenderHtml('eventList', renderEventList(eventList));
+        }
+      })
+      .catch(function(error) {
+        setRenderHtml('eventList', renderEventListInfo('Failed to display upcoming shows.'));
+        throw error;
+      });
+
+    loadHomepage(prismicQuery)
+      .then(function(homepage) {
+        setRenderHtml('info', renderInfo(homepage));
+        var introText = homepage.getStructuredText('homepage.intro-text');
+        if (introText) {
+          setRenderHtml('intro', introText.asHtml());
+        }
+      });
+
   });
+
 })();
